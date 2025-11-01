@@ -9,6 +9,11 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui'
   ],
+  css: ['~/assets/css/main.css'],
+  ui: {
+    // disable automatic switch between light and dark mode
+    colorMode: false
+  },
   image: {},
   app: {
     head: {

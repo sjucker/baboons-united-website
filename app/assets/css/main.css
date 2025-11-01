@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: 'Roboto', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root {
+  --ui-primary: #fbae17;
+  --ui-secondary: #ffcc5a;
+}
