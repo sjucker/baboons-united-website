@@ -42,17 +42,17 @@
                     <img
                       src="https://swissunihockeysa.blob.core.windows.net/clublogos/f49c470a-fc49-4d42-9e51-dc423094bb8e_7689image400.png"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl">Rämi Floorball Zürich</div>
+                    <div class="uppercase font-bold text-xl text-center line-clamp-2">Rämi Floorball Zürich</div>
                   </div>
                   <div class="flex flex-col justify-center items-center flex-1">
                     <div class="text-3xl font-bold">09:00</div>
-                    <div>Sonntag, 30. November</div>
+                    <div class="text-center">Sonntag, 30. November</div>
                   </div>
                   <div class="flex flex-col items-center gap-2 flex-1">
                     <img
                       src="https://swissunihockeysa.blob.core.windows.net/clublogos/79b1857e-bb91-4bd8-9333-a6c4a9edc9af_12214image400.png"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-secondary">Baboons Hedingen</div>
+                    <div class="uppercase font-bold text-xl text-secondary text-center line-clamp-2">Baboons Hedingen</div>
                   </div>
                 </div>
               </div>
@@ -68,17 +68,17 @@
                     <img
                       src="https://swissunihockeysa.blob.core.windows.net/clublogos/79b1857e-bb91-4bd8-9333-a6c4a9edc9af_12214image400.png"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-secondary">Baboons Hedingen</div>
+                    <div class="uppercase font-bold text-xl text-secondary text-center line-clamp-2">Baboons Hedingen</div>
                   </div>
                   <div class="flex flex-col justify-center items-center flex-1">
                     <div class="text-3xl font-bold">11:45</div>
-                    <div>Sonntag, 30. November</div>
+                    <div class="text-center">Sonntag, 30. November</div>
                   </div>
                   <div class="flex flex-col items-center gap-2 flex-1">
                     <img
                       src="https://swissunihockeysa.blob.core.windows.net/clublogos/b5b2ff28-e669-41bc-9afb-0c857993cb82_124.png"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl">Pfannenstiel Egg</div>
+                    <div class="uppercase font-bold text-xl text-center line-clamp-2">Pfannenstiel Egg</div>
                   </div>
                 </div>
               </div>
@@ -95,11 +95,11 @@
                     <img
                       src="https://swissunihockeysa.blob.core.windows.net/clublogos/79b1857e-bb91-4bd8-9333-a6c4a9edc9af_12214image400.png"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-secondary">Baboons Hedingen</div>
+                    <div class="uppercase font-bold text-xl text-secondary text-center line-clamp-2">Baboons Hedingen</div>
                   </div>
                   <div class="flex flex-col justify-center items-center flex-1">
                     <div class="text-3xl font-bold text-secondary">9-7</div>
-                    <div>Sonntag, 28. September</div>
+                    <div class="text-center">Sonntag, 28. September</div>
                     <UButton to="https://unihockey.swiss/LeagueOrganizer/Magazine/1#/magazinegameview/93257" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">Zusammenfassung
                     </UButton>
                   </div>
@@ -107,7 +107,7 @@
                     <img
                       src="https://swissunihockeysa.blob.core.windows.net/clublogos/2afeaab8-c726-42bb-aa0e-7f8b2b0882e8_90.png"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl">UHC Phantoms Rafzerfeld</div>
+                    <div class="uppercase font-bold text-xl text-center line-clamp-2">UHC Phantoms Rafzerfeld</div>
                   </div>
                 </div>
               </div>
@@ -122,11 +122,11 @@
                     <img
                       src="https://swissunihockeysa.blob.core.windows.net/clublogos/7a37baa2-f92f-460a-b3ba-64caa50f8e8b_3936image400.png"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl">TV Mellingen</div>
+                    <div class="uppercase font-bold text-xl text-center line-clamp-2">TV Mellingen</div>
                   </div>
                   <div class="flex flex-col justify-center items-center flex-1">
                     <div class="text-3xl font-bold text-secondary">3 - 7</div>
-                    <div>Sonntag, 28. September</div>
+                    <div class="text-center">Sonntag, 28. September</div>
                     <UButton to="https://unihockey.swiss/LeagueOrganizer/Magazine/1#/magazinegameview/93255" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">Zusammenfassung
                     </UButton>
                   </div>
@@ -134,7 +134,7 @@
                     <img
                       src="https://swissunihockeysa.blob.core.windows.net/clublogos/79b1857e-bb91-4bd8-9333-a6c4a9edc9af_12214image400.png"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-secondary">Baboons Hedingen</div>
+                    <div class="uppercase font-bold text-xl text-secondary text-center line-clamp-2">Baboons Hedingen</div>
                   </div>
                 </div>
               </div>
