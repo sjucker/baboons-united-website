@@ -100,7 +100,7 @@
                   <div class="flex flex-col justify-center items-center flex-1">
                     <div class="text-3xl font-bold text-secondary">9-7</div>
                     <div class="text-center">Sonntag, 28. September</div>
-                    <UButton to="https://unihockey.swiss/LeagueOrganizer/Magazine/1#/magazinegameview/93257" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">Zusammenfassung
+                    <UButton to="https://unihockey.swiss/LeagueOrganizer/Magazine/1#/magazinegameview/93257" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">mehr
                     </UButton>
                   </div>
                   <div class="flex flex-col items-center gap-2 flex-1">
@@ -127,8 +127,7 @@
                   <div class="flex flex-col justify-center items-center flex-1">
                     <div class="text-3xl font-bold text-secondary">3 - 7</div>
                     <div class="text-center">Sonntag, 28. September</div>
-                    <UButton to="https://unihockey.swiss/LeagueOrganizer/Magazine/1#/magazinegameview/93255" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">Zusammenfassung
-                    </UButton>
+                    <UButton to="https://unihockey.swiss/LeagueOrganizer/Magazine/1#/magazinegameview/93255" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">mehr</UButton>
                   </div>
                   <div class="flex flex-col items-center gap-2 flex-1">
                     <img
