@@ -15,7 +15,6 @@ export default defineNuxtConfig({
     colorMode: false
   },
   image: {
-    domains: ['swissunihockeysa.blob.core.windows.net', 'baboons.ch'],
   },
   app: {
     head: {
