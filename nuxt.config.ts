@@ -14,7 +14,9 @@ export default defineNuxtConfig({
     // disable automatic switch between light and dark mode
     colorMode: false
   },
-  image: {},
+  image: {
+    domains: ['swissunihockeysa.blob.core.windows.net', 'baboons.ch'],
+  },
   app: {
     head: {
       title: 'Baboons United Hedingen',
