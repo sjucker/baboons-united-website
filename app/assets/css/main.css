@@ -9,6 +9,11 @@
 }
 
 :root {
-  --ui-primary: #fbae17;
-  --ui-secondary: #ffcc5a;
+  --ui-primary: #000000;
+  --ui-secondary: #fbae17;
+  --ui-bg: #ffcc5a;
+}
+
+.dark {
+
 }
