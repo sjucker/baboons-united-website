@@ -14,6 +14,8 @@
     "upgrade-interactive": "ncu -i"
   },
   "dependencies": {
+    "@netlify/functions": "5.1.0",
+    "@netlify/nuxt": "0.2.13",
     "@nuxt/content": "3.8.2",
     "@nuxt/eslint": "1.10.0",
     "@nuxt/image": "1.11.0",

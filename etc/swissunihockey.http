@@ -1,0 +1,14 @@
+###
+GET https://api-v2.swissunihockey.ch/api/games?mode=team&season=2025&team_id=429321&games_per_page=1000
+
+###
+GET https://api-v2.swissunihockey.ch/api/teams?mode=by_club&season=2025&club_id=423370
+
+###
+GET https://api-v2.swissunihockey.ch/api/clubs?season=2025
+
+###
+GET https://api-v2.swissunihockey.ch/api/clubs?season=2025&club_id=423370
+
+###
+GET https://api-v2.swissunihockey.ch/api/games/1081119/summary
