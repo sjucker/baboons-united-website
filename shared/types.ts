@@ -1,3 +1,5 @@
+export const TEAM_ID = 429321
+
 export interface SuLink {
   ids: number[]
 }
@@ -41,6 +43,7 @@ export interface SuGameDetailsResponse {
 export interface Game {
   id: number,
   date: string
+  time: string
   location: string
   homeTeam: string
   homeTeamId: number

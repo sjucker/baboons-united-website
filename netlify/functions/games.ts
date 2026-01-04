@@ -1,8 +1,8 @@
 import type {Handler} from '@netlify/functions'
 import type {Game, GameDetails, GamesOverview, SuGameDetailsResponse, SuResponse} from "../../shared/types";
+import {TEAM_ID} from "../../shared/types";
 
 const API_BASE_URL = 'https://api-v2.swissunihockey.ch/api'
-const TEAM_ID = '429321'
 
 async function fetchGame(id: number): Promise<GameDetails | null> {
   const res = await fetch(`${API_BASE_URL}/games/${id}`)
@@ -40,7 +40,8 @@ async function fetchGamesBySeason(season: number): Promise<Game[]> {
 
     const game: Game = {
       id,
-      date: `${date} ${time}`,
+      date: date,
+      time: time,
       location: `${location1}, ${location2}`,
       homeTeam: homeTeam ?? '?',
       homeTeamId: 0,

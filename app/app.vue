@@ -54,7 +54,7 @@
               </div>
             </UCard>
           </template>
-          <UCard v-else v-for="game in displayedFutureGames" :key="game.id" class="bg-white">
+          <UCard v-for="game in displayedFutureGames" v-else :key="game.id" class="bg-white">
             <template #default>
               <div class="flex flex-col gap-2">
                 <div class="text-center text-sm">{{ game.location }}</div>
@@ -62,25 +62,27 @@
                   <div class="flex flex-col items-center gap-2 flex-1">
                     <img
                       :src="game.homeTeamLogo"
+                      :alt="game.homeTeam"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-center line-clamp-2" :class="{'text-secondary': game.homeTeam === 'Baboons Hedingen'}">{{ game.homeTeam }}</div>
+                    <div class="uppercase font-bold text-xl text-center line-clamp-2" :class="{'text-secondary': game.homeTeamId === TEAM_ID}">{{ game.homeTeam }}</div>
                   </div>
                   <div class="flex flex-col justify-center items-center flex-1">
-                    <div class="text-3xl font-bold">{{ game.date.split(' ')[1] }}</div>
-                    <div class="text-center">{{ game.date.split(' ')[0] }}</div>
+                    <div class="text-3xl font-bold">{{ game.time }}</div>
+                    <div class="text-center">{{ game.date }}</div>
                   </div>
                   <div class="flex flex-col items-center gap-2 flex-1">
                     <img
                       :src="game.guestTeamLogo"
+                      :alt="game.guestTeam"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-center line-clamp-2" :class="{'text-secondary': game.guestTeam === 'Baboons Hedingen'}">{{ game.guestTeam }}</div>
+                    <div class="uppercase font-bold text-xl text-center line-clamp-2" :class="{'text-secondary': game.guestTeamId === TEAM_ID}">{{ game.guestTeam }}</div>
                   </div>
                 </div>
               </div>
             </template>
           </UCard>
-          <div v-if="status === 'success' && (data?.future?.length ?? 0) > 2 && !showAllFuture" class="flex justify-center">
-            <UButton variant="soft" @click="showAllFuture = true">Alle Spiele anzeigen</UButton>
+          <div v-if="status === 'success' && (data?.future.length ?? 0) > 2 && !showAllFuture" class="flex justify-center">
+            <UButton variant="soft" class="cursor-pointer" @click="showAllFuture = true">mehr...</UButton>
           </div>
         </div>
         <h2>Letzte Resultate</h2>
@@ -104,40 +106,42 @@
               </div>
             </UCard>
           </template>
-          <UCard v-else v-for="game in displayedPastGames" :key="game.id" class="bg-white">
+          <UCard v-for="game in displayedPastGames" v-else :key="game.id" class="bg-white">
             <template #default>
               <div class="flex flex-col gap-2">
                 <div class="flex justify-between">
                   <div class="flex flex-col items-center gap-2 flex-1">
                     <img
                       :src="game.homeTeamLogo"
+                      :alt="game.homeTeam"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-center line-clamp-2" :class="{'text-secondary': game.homeTeam === 'Baboons Hedingen'}">{{ game.homeTeam }}</div>
+                    <div class="uppercase font-bold text-xl text-center line-clamp-2" :class="{'text-secondary': game.homeTeamId === TEAM_ID}">{{ game.homeTeam }}</div>
                   </div>
                   <div class="flex flex-col justify-center items-center flex-1">
                     <div class="text-3xl font-bold text-secondary">{{ game.result }}</div>
                     <div class="text-center">{{ game.date.split(' ')[0] }}</div>
-                    <UButton :to="`https://unihockey.swiss/LeagueOrganizer/Magazine/1#/magazinegameview/${game.id}`" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">mehr
+                    <UButton :to="`https://myapp.swissunihockey.ch/LeagueOrganizer/Magazine/1#/magazinegameview/${game.id}`" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">mehr
                     </UButton>
                   </div>
                   <div class="flex flex-col items-center gap-2 flex-1">
                     <img
                       :src="game.guestTeamLogo"
+                      :alt="game.guestTeam"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-center line-clamp-2" :class="{'text-secondary': game.guestTeam === 'Baboons Hedingen'}">{{ game.guestTeam }}</div>
+                    <div class="uppercase font-bold text-xl text-center line-clamp-2" :class="{'text-secondary': game.guestTeamId === TEAM_ID}">{{ game.guestTeam }}</div>
                   </div>
                 </div>
               </div>
             </template>
           </UCard>
           <div v-if="status === 'success' && (data?.past?.length ?? 0) > 2 && !showAllPast" class="flex justify-center">
-            <UButton variant="soft" @click="showAllPast = true">Alle Resultate anzeigen</UButton>
+            <UButton variant="soft" class="cursor-pointer" @click="showAllPast = true">mehr...</UButton>
           </div>
         </div>
 
         <h2>Team</h2>
         <div class="flex flex-col md:flex-row gap-4">
-          <img src="https://baboons.ch/team/team.jpg" class="w-full object-cover rounded-lg not-prose flex-1">
+          <img src="https://baboons.ch/team/team.jpg" alt="Baboons United" class="w-full object-cover rounded-lg not-prose flex-1">
 
           <div class="flex-1">
             1 Martin Helbling<br>
@@ -179,7 +183,7 @@
   </UApp>
 </template>
 <script setup lang="ts">
-import type {GamesOverview} from "#shared/types";
+import {type GamesOverview, TEAM_ID} from "#shared/types";
 
 const {data, status} = await useFetch<GamesOverview, unknown>('/.netlify/functions/games', {
   server: false
