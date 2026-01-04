@@ -164,6 +164,10 @@
       </div>
     </div>
 
+    <div v-if="status === 'success'">
+      {{ data! }}
+    </div>
+
     <UFooter>
       <template #left>
         <p class="text-sm">© {{ new Date().getFullYear() }} Baboons United Hedingen</p>
@@ -185,4 +189,9 @@
   </UApp>
 </template>
 <script setup lang="ts">
+import type {GamesOverview} from "#shared/types";
+
+const {data, status} = await useFetch<GamesOverview, unknown>('/.netlify/functions/games', {
+  server: false
+})
 </script>

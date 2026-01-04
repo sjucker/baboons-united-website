@@ -11,4 +11,4 @@ GET https://api-v2.swissunihockey.ch/api/clubs?season=2025
 GET https://api-v2.swissunihockey.ch/api/clubs?season=2025&club_id=423370
 
 ###
-GET https://api-v2.swissunihockey.ch/api/games/1081119/summary
+GET https://api-v2.swissunihockey.ch/api/games/1081148/summary

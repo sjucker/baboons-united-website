@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: {enabled: true},
 
-  modules: ['@nuxt/content', '@nuxt/eslint', '@nuxt/image', '@nuxt/ui', '@netlify/nuxt'],
+  modules: ['@nuxt/content', '@nuxt/eslint', '@nuxt/image', '@nuxt/ui', '@netlify/nuxt', '@vueuse/nuxt'],
   css: ['~/assets/css/main.css'],
   ui: {
     // disable automatic switch between light and dark mode
