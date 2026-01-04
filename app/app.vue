@@ -33,112 +33,106 @@
 
         <h2>Nächste Spiele</h2>
         <div class="flex flex-col gap-4">
-          <UCard class="bg-white">
+          <template v-if="status !== 'success'">
+            <UCard v-for="i in 2" :key="i" class="bg-white">
+              <div class="flex flex-col gap-4">
+                <USkeleton class="h-4 w-[250px] mx-auto"/>
+                <div class="flex justify-between items-center">
+                  <div class="flex flex-col items-center gap-2 flex-1">
+                    <USkeleton class="h-16 w-16 rounded-full"/>
+                    <USkeleton class="h-6 w-32"/>
+                  </div>
+                  <div class="flex flex-col items-center gap-2 flex-1">
+                    <USkeleton class="h-8 w-16"/>
+                    <USkeleton class="h-4 w-24"/>
+                  </div>
+                  <div class="flex flex-col items-center gap-2 flex-1">
+                    <USkeleton class="h-16 w-16 rounded-full"/>
+                    <USkeleton class="h-6 w-32"/>
+                  </div>
+                </div>
+              </div>
+            </UCard>
+          </template>
+          <UCard v-else v-for="game in displayedFutureGames" :key="game.id" class="bg-white">
             <template #default>
               <div class="flex flex-col gap-2">
-                <div class="text-center text-sm">Kirchwies, Egg b. Zürich</div>
+                <div class="text-center text-sm">{{ game.location }}</div>
                 <div class="flex justify-between">
                   <div class="flex flex-col items-center gap-2 flex-1">
                     <img
-                      src="https://swissunihockeysa.blob.core.windows.net/clublogos/f49c470a-fc49-4d42-9e51-dc423094bb8e_7689image400.png"
+                      :src="game.homeTeamLogo"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-center line-clamp-2">Rämi Floorball Zürich</div>
+                    <div class="uppercase font-bold text-xl text-center line-clamp-2" :class="{'text-secondary': game.homeTeam === 'Baboons Hedingen'}">{{ game.homeTeam }}</div>
                   </div>
                   <div class="flex flex-col justify-center items-center flex-1">
-                    <div class="text-3xl font-bold">09:00</div>
-                    <div class="text-center">Sonntag, 30. November</div>
+                    <div class="text-3xl font-bold">{{ game.date.split(' ')[1] }}</div>
+                    <div class="text-center">{{ game.date.split(' ')[0] }}</div>
                   </div>
                   <div class="flex flex-col items-center gap-2 flex-1">
                     <img
-                      src="https://swissunihockeysa.blob.core.windows.net/clublogos/79b1857e-bb91-4bd8-9333-a6c4a9edc9af_12214image400.png"
+                      :src="game.guestTeamLogo"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-secondary text-center line-clamp-2">Baboons Hedingen</div>
+                    <div class="uppercase font-bold text-xl text-center line-clamp-2" :class="{'text-secondary': game.guestTeam === 'Baboons Hedingen'}">{{ game.guestTeam }}</div>
                   </div>
                 </div>
               </div>
             </template>
           </UCard>
-
-          <UCard class="bg-white">
-            <template #default>
-              <div class="flex flex-col gap-2">
-                <div class="text-center text-sm">Kirchwies, Egg b. Zürich</div>
-                <div class="flex justify-between">
-                  <div class="flex flex-col items-center gap-2 flex-1">
-                    <img
-                      src="https://swissunihockeysa.blob.core.windows.net/clublogos/79b1857e-bb91-4bd8-9333-a6c4a9edc9af_12214image400.png"
-                      class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-secondary text-center line-clamp-2">Baboons Hedingen</div>
-                  </div>
-                  <div class="flex flex-col justify-center items-center flex-1">
-                    <div class="text-3xl font-bold">11:45</div>
-                    <div class="text-center">Sonntag, 30. November</div>
-                  </div>
-                  <div class="flex flex-col items-center gap-2 flex-1">
-                    <img
-                      src="https://swissunihockeysa.blob.core.windows.net/clublogos/b5b2ff28-e669-41bc-9afb-0c857993cb82_124.png"
-                      class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-center line-clamp-2">Pfannenstiel Egg</div>
-                  </div>
-                </div>
-              </div>
-            </template>
-          </UCard>
+          <div v-if="status === 'success' && (data?.future?.length ?? 0) > 2 && !showAllFuture" class="flex justify-center">
+            <UButton variant="soft" @click="showAllFuture = true">Alle Spiele anzeigen</UButton>
+          </div>
         </div>
         <h2>Letzte Resultate</h2>
         <div class="flex flex-col gap-4">
-          <UCard class="bg-white">
+          <template v-if="status === 'pending'">
+            <UCard v-for="i in 2" :key="i" class="bg-white">
+              <div class="flex justify-between items-center">
+                <div class="flex flex-col items-center gap-2 flex-1">
+                  <USkeleton class="h-16 w-16 rounded-full"/>
+                  <USkeleton class="h-6 w-32"/>
+                </div>
+                <div class="flex flex-col items-center gap-2 flex-1">
+                  <USkeleton class="h-8 w-16"/>
+                  <USkeleton class="h-4 w-24"/>
+                  <USkeleton class="h-8 w-20"/>
+                </div>
+                <div class="flex flex-col items-center gap-2 flex-1">
+                  <USkeleton class="h-16 w-16 rounded-full"/>
+                  <USkeleton class="h-6 w-32"/>
+                </div>
+              </div>
+            </UCard>
+          </template>
+          <UCard v-else v-for="game in displayedPastGames" :key="game.id" class="bg-white">
             <template #default>
               <div class="flex flex-col gap-2">
                 <div class="flex justify-between">
                   <div class="flex flex-col items-center gap-2 flex-1">
                     <img
-                      src="https://swissunihockeysa.blob.core.windows.net/clublogos/79b1857e-bb91-4bd8-9333-a6c4a9edc9af_12214image400.png"
+                      :src="game.homeTeamLogo"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-secondary text-center line-clamp-2">Baboons Hedingen</div>
+                    <div class="uppercase font-bold text-xl text-center line-clamp-2" :class="{'text-secondary': game.homeTeam === 'Baboons Hedingen'}">{{ game.homeTeam }}</div>
                   </div>
                   <div class="flex flex-col justify-center items-center flex-1">
-                    <div class="text-3xl font-bold text-secondary">9-7</div>
-                    <div class="text-center">Sonntag, 28. September</div>
-                    <UButton to="https://unihockey.swiss/LeagueOrganizer/Magazine/1#/magazinegameview/93257" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">mehr
+                    <div class="text-3xl font-bold text-secondary">{{ game.result }}</div>
+                    <div class="text-center">{{ game.date.split(' ')[0] }}</div>
+                    <UButton :to="`https://unihockey.swiss/LeagueOrganizer/Magazine/1#/magazinegameview/${game.id}`" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">mehr
                     </UButton>
                   </div>
                   <div class="flex flex-col items-center gap-2 flex-1">
                     <img
-                      src="https://swissunihockeysa.blob.core.windows.net/clublogos/2afeaab8-c726-42bb-aa0e-7f8b2b0882e8_90.png"
+                      :src="game.guestTeamLogo"
                       class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-center line-clamp-2">UHC Phantoms Rafzerfeld</div>
+                    <div class="uppercase font-bold text-xl text-center line-clamp-2" :class="{'text-secondary': game.guestTeam === 'Baboons Hedingen'}">{{ game.guestTeam }}</div>
                   </div>
                 </div>
               </div>
             </template>
           </UCard>
-
-          <UCard class="bg-white">
-            <template #default>
-              <div class="flex flex-col gap-2">
-                <div class="flex justify-between">
-                  <div class="flex flex-col items-center gap-2 flex-1">
-                    <img
-                      src="https://swissunihockeysa.blob.core.windows.net/clublogos/7a37baa2-f92f-460a-b3ba-64caa50f8e8b_3936image400.png"
-                      class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-center line-clamp-2">TV Mellingen</div>
-                  </div>
-                  <div class="flex flex-col justify-center items-center flex-1">
-                    <div class="text-3xl font-bold text-secondary">3 - 7</div>
-                    <div class="text-center">Sonntag, 28. September</div>
-                    <UButton to="https://unihockey.swiss/LeagueOrganizer/Magazine/1#/magazinegameview/93255" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">mehr</UButton>
-                  </div>
-                  <div class="flex flex-col items-center gap-2 flex-1">
-                    <img
-                      src="https://swissunihockeysa.blob.core.windows.net/clublogos/79b1857e-bb91-4bd8-9333-a6c4a9edc9af_12214image400.png"
-                      class="w-16 h-16 object-cover not-prose">
-                    <div class="uppercase font-bold text-xl text-secondary text-center line-clamp-2">Baboons Hedingen</div>
-                  </div>
-                </div>
-              </div>
-            </template>
-          </UCard>
+          <div v-if="status === 'success' && (data?.past?.length ?? 0) > 2 && !showAllPast" class="flex justify-center">
+            <UButton variant="soft" @click="showAllPast = true">Alle Resultate anzeigen</UButton>
+          </div>
         </div>
 
         <h2>Team</h2>
@@ -162,10 +156,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div v-if="status === 'success'">
-      {{ data! }}
     </div>
 
     <UFooter>
@@ -193,5 +183,18 @@ import type {GamesOverview} from "#shared/types";
 
 const {data, status} = await useFetch<GamesOverview, unknown>('/.netlify/functions/games', {
   server: false
+})
+
+const showAllFuture = ref(false)
+const showAllPast = ref(false)
+
+const displayedFutureGames = computed(() => {
+  if (!data.value?.future) return []
+  return showAllFuture.value ? data.value.future : data.value.future.slice(0, 2)
+})
+
+const displayedPastGames = computed(() => {
+  if (!data.value?.past) return []
+  return showAllPast.value ? data.value.past : data.value.past.slice(0, 2)
 })
 </script>
