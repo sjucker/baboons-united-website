@@ -59,14 +59,14 @@ async function fetchGamesBySeason(season: number): Promise<Game[]> {
 
 export const handler: Handler = async () => {
   const currentYear = new Date().getFullYear()
-  const responses: GamesOverview = {past: [], future: []}
+  const response: GamesOverview = {past: [], future: []}
 
   const processGames = (games: Game[]) => {
     games.forEach((game) => {
       if (game.result) {
-        responses.past.push(game)
+        response.past.push(game)
       } else {
-        responses.future.push(game)
+        response.future.push(game)
       }
     })
   }
@@ -74,14 +74,17 @@ export const handler: Handler = async () => {
   let games = await fetchGamesBySeason(currentYear);
   processGames(games)
 
-  if (responses.past.length === 0) {
+  if (response.past.length === 0) {
     games = await fetchGamesBySeason(currentYear - 1);
     processGames(games)
   }
 
+  // make sure latest comes first
+  response.past.reverse()
+
   return {
     statusCode: 200,
     headers: {'Content-Type': 'application/json; charset=utf-8'},
-    body: JSON.stringify(responses)
+    body: JSON.stringify(response)
   };
 }
