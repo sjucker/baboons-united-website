@@ -81,7 +81,7 @@
               </div>
             </template>
           </UCard>
-          <div v-if="status === 'success' && (data?.future.length ?? 0) > 2 && !showAllFuture" class="flex justify-center">
+          <div v-if="showMoreFutureGames" class="flex justify-center">
             <UButton variant="soft" class="cursor-pointer" @click="showAllFuture = true">mehr...</UButton>
           </div>
         </div>
@@ -134,7 +134,7 @@
               </div>
             </template>
           </UCard>
-          <div v-if="status === 'success' && (data?.past?.length ?? 0) > 2 && !showAllPast" class="flex justify-center">
+          <div v-if="showMorePastGames" class="flex justify-center">
             <UButton variant="soft" class="cursor-pointer" @click="showAllPast = true">mehr...</UButton>
           </div>
         </div>
@@ -189,16 +189,26 @@ const {data, status} = await useFetch<GamesOverview, unknown>('/.netlify/functio
   server: false
 })
 
+const maxInitialDisplayed = 2
+
 const showAllFuture = ref(false)
 const showAllPast = ref(false)
 
 const displayedFutureGames = computed(() => {
   if (!data.value?.future) return []
-  return showAllFuture.value ? data.value.future : data.value.future.slice(0, 2)
+  return showAllFuture.value ? data.value.future : data.value.future.slice(0, maxInitialDisplayed)
 })
 
 const displayedPastGames = computed(() => {
   if (!data.value?.past) return []
-  return showAllPast.value ? data.value.past : data.value.past.slice(0, 2)
+  return showAllPast.value ? data.value.past : data.value.past.slice(0, maxInitialDisplayed)
+})
+
+const showMoreFutureGames = computed(() => {
+  return status.value === 'success' && (data?.value?.future.length ?? 0) > maxInitialDisplayed && !showAllFuture.value
+})
+
+const showMorePastGames = computed(() => {
+  return status.value === 'success' && (data?.value?.past?.length ?? 0) > maxInitialDisplayed && !showAllPast.value
 })
 </script>
