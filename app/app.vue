@@ -68,7 +68,7 @@
                   </div>
                   <div class="flex flex-col justify-center items-center flex-1">
                     <div class="text-3xl font-bold">{{ game.time }}</div>
-                    <div class="text-center">{{ game.date }}</div>
+                    <div class="text-center">{{ formatDate(game.date) }}</div>
                   </div>
                   <div class="flex flex-col items-center gap-2 flex-1">
                     <img
@@ -119,7 +119,7 @@
                   </div>
                   <div class="flex flex-col justify-center items-center flex-1">
                     <div class="text-3xl font-bold text-secondary">{{ game.result }}</div>
-                    <div class="text-center">{{ game.date.split(' ')[0] }}</div>
+                    <div class="text-center">{{ formatDate(game.date) }}</div>
                     <UButton :to="`https://myapp.swissunihockey.ch/LeagueOrganizer/Magazine/1#/magazinegameview/${game.id}`" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">mehr
                     </UButton>
                   </div>
@@ -193,6 +193,15 @@ const maxInitialDisplayed = 2
 
 const showAllFuture = ref(false)
 const showAllPast = ref(false)
+
+function formatDate(date: Date): string {
+  return new Intl.DateTimeFormat('de-CH', {
+    weekday: 'long',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  }).format(new Date(date))
+}
 
 const displayedFutureGames = computed(() => {
   if (!data.value?.future) return []

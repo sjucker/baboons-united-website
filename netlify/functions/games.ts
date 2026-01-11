@@ -32,11 +32,19 @@ async function fetchGamesBySeason(season: number): Promise<Game[]> {
 
   return Promise.all(rows.map(async (row) => {
     const id = row.link.ids[0];
-    const [date, time] = row.cells[0].text
+    const [dateValue, time] = row.cells[0].text
     const [location1, location2] = row.cells[1].text
     const homeTeam = row.cells[2].text[0]
     const guestTeam = row.cells[3].text[0]
     const result = row.cells[4].text[0]
+
+    let date: Date;
+    if (dateValue === 'heute') {
+      date = new Date();
+    } else {
+      const [day, month, year] = dateValue.split('.').map(Number);
+      date = new Date(year, month - 1, day);
+    }
 
     const game: Game = {
       id,

@@ -42,7 +42,7 @@ export interface SuGameDetailsResponse {
 
 export interface Game {
   id: number,
-  date: string
+  date: Date
   time: string
   location: string
   homeTeam: string
