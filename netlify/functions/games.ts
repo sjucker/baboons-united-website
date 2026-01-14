@@ -41,6 +41,9 @@ async function fetchGamesBySeason(season: number): Promise<Game[]> {
     let date: Date;
     if (dateValue === 'heute') {
       date = new Date();
+    } else if (dateValue === 'morgen') {
+      date = new Date();
+      date.setDate(date.getDate() + 1);
     } else {
       const [day, month, year] = dateValue.split('.').map(Number);
       date = new Date(year, month - 1, day);
