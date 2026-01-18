@@ -17,11 +17,11 @@
   "dependencies": {
     "@netlify/functions": "5.1.2",
     "@netlify/nuxt": "0.2.18",
-    "@nuxt/content": "3.10.0",
+    "@nuxt/content": "3.11.0",
     "@nuxt/eslint": "1.12.1",
     "@nuxt/image": "2.0.0",
     "@nuxt/ui": "4.3.0",
-    "better-sqlite3": "12.5.0",
+    "better-sqlite3": "12.6.2",
     "eslint": "9.39.2",
     "nuxt": "4.2.2",
     "vue": "3.5.26",
