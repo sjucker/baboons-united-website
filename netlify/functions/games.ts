@@ -21,7 +21,7 @@ async function fetchGame(id: number): Promise<GameDetails | null> {
   }
 }
 
-async function fetchGamesBySeason(season: number): Promise<Game[]> {
+export async function fetchGamesBySeason(season: number): Promise<Game[]> {
   const url = `${API_BASE_URL}/games?mode=team&season=${season}&team_id=${TEAM_ID}&games_per_page=1000`
 
   const res = await fetch(url)
@@ -39,9 +39,9 @@ async function fetchGamesBySeason(season: number): Promise<Game[]> {
     const result = row.cells[4].text[0]
 
     let date: Date;
-    if (dateValue === 'heute') {
+    if (dateValue.toLowerCase() === 'heute') {
       date = new Date();
-    } else if (dateValue === 'morgen') {
+    } else if (dateValue.toLowerCase() === 'morgen') {
       date = new Date();
       date.setDate(date.getDate() + 1);
     } else {
