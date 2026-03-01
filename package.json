@@ -16,22 +16,22 @@
   },
   "dependencies": {
     "@netlify/functions": "5.1.2",
-    "@netlify/nuxt": "0.2.18",
-    "@nuxt/content": "3.11.0",
-    "@nuxt/eslint": "1.12.1",
+    "@netlify/nuxt": "0.2.25",
+    "@nuxt/content": "3.12.0",
+    "@nuxt/eslint": "1.15.2",
     "@nuxt/image": "2.0.0",
-    "@nuxt/ui": "4.3.0",
+    "@nuxt/ui": "4.5.0",
     "better-sqlite3": "12.6.2",
-    "eslint": "9.39.2",
-    "nuxt": "4.2.2",
-    "vue": "3.5.26",
+    "eslint": "10.0.2",
+    "nuxt": "4.3.1",
+    "vue": "3.5.29",
     "vue-router": "4.6.4"
   },
   "devDependencies": {
     "@tailwindcss/typography": "0.5.19",
-    "@vitest/coverage-v8": "4.0.17",
-    "@vueuse/core": "14.1.0",
-    "@vueuse/nuxt": "14.1.0",
-    "vitest": "4.0.17"
+    "@vitest/coverage-v8": "4.0.18",
+    "@vueuse/core": "14.2.1",
+    "@vueuse/nuxt": "14.2.1",
+    "vitest": "4.0.18"
   }
 }
