@@ -1,6 +1,6 @@
 import {beforeEach, describe, expect, it, vi} from 'vitest'
-import {fetchGamesBySeason} from './games'
-import {TEAM_ID} from '../../shared/types'
+import {fetchGamesBySeason} from '../../../netlify/functions/games'
+import {TEAM_ID} from '../../../shared/types'
 
 global.fetch = vi.fn()
 
