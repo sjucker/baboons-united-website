@@ -120,8 +120,8 @@
                   <div class="flex flex-col justify-center items-center flex-1">
                     <div class="text-3xl font-bold text-secondary">{{ game.result }}</div>
                     <div class="text-center">{{ formatDate(game.date) }}</div>
-                    <UButton :to="`https://myapp.swissunihockey.ch/LeagueOrganizer/Magazine/1#/magazinegameview/${game.id}`" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">mehr
-                    </UButton>
+<!--                    <UButton :to="`https://myapp.swissunihockey.ch/LeagueOrganizer/Magazine/1#/magazinegameview/${game.id}`" target="_blank" variant="ghost" trailing-icon="i-lucide-external-link">mehr-->
+<!--                    </UButton>-->
                   </div>
                   <div class="flex flex-col items-center gap-2 flex-1">
                     <img
