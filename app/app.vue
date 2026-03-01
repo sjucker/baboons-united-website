@@ -5,31 +5,31 @@
         <NuxtImg src="/logo.png" alt="Baboons United Hedingen Logo" densities="x1 x2" class="lg:sticky lg:top-12 lg:left-0"/>
       </div>
       <div class="flex-3">
-        <h2>News</h2>
+<!--        <h2>News</h2>-->
 
-        <div class="flex flex-col md:flex-row gap-4">
-          <UCard class="bg-white flex-1">
-            <template #default>
-              <div class="text-2xl font-bold">Lorem Ipsum</div>
-              <p class="line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis accumsan augue. Cras nec est sagittis, fringilla ante a,
-                sollicitudin justo.</p>
-              <div class="flex justify-end">
-                <NuxtLink to="/">weiterlesen</NuxtLink>
-              </div>
-            </template>
-          </UCard>
+<!--        <div class="flex flex-col md:flex-row gap-4">-->
+<!--          <UCard class="bg-white flex-1">-->
+<!--            <template #default>-->
+<!--              <div class="text-2xl font-bold">Lorem Ipsum</div>-->
+<!--              <p class="line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis accumsan augue. Cras nec est sagittis, fringilla ante a,-->
+<!--                sollicitudin justo.</p>-->
+<!--              <div class="flex justify-end">-->
+<!--                <NuxtLink to="/">weiterlesen</NuxtLink>-->
+<!--              </div>-->
+<!--            </template>-->
+<!--          </UCard>-->
 
-          <UCard class="bg-white flex-1">
-            <template #default>
-              <div class="text-2xl font-bold">Donec ac auctor erat</div>
-              <p class="line-clamp-2">Sed vulputate diam sed consectetur sagittis. Quisque vitae diam non nibh mollis condimentum a in elit. Vivamus tempus augue ex, sollicitudin sagittis massa
-                sagittis sed. Nunc tincidunt nibh at lacus sagittis eleifend. Curabitur et diam et nibh cursus tincidunt. Nullam nunc lacus, posuere non metus non</p>
-              <div class="flex justify-end">
-                <NuxtLink to="/">weiterlesen</NuxtLink>
-              </div>
-            </template>
-          </UCard>
-        </div>
+<!--          <UCard class="bg-white flex-1">-->
+<!--            <template #default>-->
+<!--              <div class="text-2xl font-bold">Donec ac auctor erat</div>-->
+<!--              <p class="line-clamp-2">Sed vulputate diam sed consectetur sagittis. Quisque vitae diam non nibh mollis condimentum a in elit. Vivamus tempus augue ex, sollicitudin sagittis massa-->
+<!--                sagittis sed. Nunc tincidunt nibh at lacus sagittis eleifend. Curabitur et diam et nibh cursus tincidunt. Nullam nunc lacus, posuere non metus non</p>-->
+<!--              <div class="flex justify-end">-->
+<!--                <NuxtLink to="/">weiterlesen</NuxtLink>-->
+<!--              </div>-->
+<!--            </template>-->
+<!--          </UCard>-->
+<!--        </div>-->
 
         <h2>Nächste Spiele</h2>
         <div class="flex flex-col gap-4">
