@@ -30,7 +30,10 @@ export async function fetchGamesBySeason(season: number): Promise<Game[]> {
   const data = (await res.json()) as SuResponse
   const rows = data.data?.regions?.[0]?.rows ?? []
 
-  return Promise.all(rows.map(async (row) => {
+  // cancelled games have "abgesagt" instead of a date
+  const activeRows = rows.filter((row) => row.cells[0].text[0]?.toLowerCase() !== 'abgesagt')
+
+  return Promise.all(activeRows.map(async (row) => {
     const id = row.link.ids[0];
     const [dateValue, time] = row.cells[0].text
     const [location1, location2] = row.cells[1].text

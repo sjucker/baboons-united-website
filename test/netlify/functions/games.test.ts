@@ -152,6 +152,47 @@ describe('fetchGamesBySeason', () => {
     expect(games[0].date.toDateString()).toBe(tomorrow.toDateString())
   })
 
+  it('should skip "abgesagt" games', async () => {
+    const mockSeasonResponse = {
+      data: {
+        regions: [{
+          rows: [{
+            link: {ids: [126]},
+            cells: [
+              {text: ['abgesagt']},
+              {text: ['Loc 1', 'Loc 2']},
+              {text: ['T1']},
+              {text: ['T2']},
+              {text: []}
+            ]
+          }, {
+            link: {ids: [127]},
+            cells: [
+              {text: ['14.01.2026', '20:00']},
+              {text: ['Loc 1', 'Loc 2']},
+              {text: ['T1']},
+              {text: ['T2']},
+              {text: []}
+            ]
+          }]
+        }]
+      }
+    }
+
+    vi.mocked(fetch).mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve(mockSeasonResponse)
+    } as never).mockResolvedValueOnce({
+      ok: false
+    } as never)
+
+    const games = await fetchGamesBySeason(2026)
+
+    expect(games).toHaveLength(1)
+    expect(games[0].id).toBe(127)
+    expect(fetch).not.toHaveBeenCalledWith(expect.stringContaining('/games/126'))
+  })
+
   it('should return empty array if fetch fails', async () => {
     vi.mocked(fetch).mockResolvedValueOnce({
       ok: false
