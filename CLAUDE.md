@@ -8,7 +8,7 @@ Single-page website for the floorball (Unihockey) club Baboons United Hedingen, 
 
 ## Commands
 
-Node version is pinned in `.nvmrc` (22.x).
+Node version is pinned in `.nvmrc` (24.x, matching Netlify).
 
 - `npm run dev` — local dev server
 - `npm run build` — production build
