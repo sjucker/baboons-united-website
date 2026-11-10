@@ -67,6 +67,7 @@ describe('fetchGamesBySeason', () => {
 
     const games = await fetchGamesBySeason(2026)
 
+    expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/^https:\/\/wc\.swissunihockey\.ch\/games\?/))
     expect(fetch).toHaveBeenCalledWith(expect.stringContaining(`season=2026&team_id=${TEAM_ID}`))
     expect(fetch).toHaveBeenCalledWith(expect.stringContaining('/games/123'))
 
@@ -150,6 +151,38 @@ describe('fetchGamesBySeason', () => {
     tomorrow.setDate(tomorrow.getDate() + 1)
 
     expect(games[0].date.toDateString()).toBe(tomorrow.toDateString())
+  })
+
+  it('should handle "gestern" correctly', async () => {
+    const mockSeasonResponse = {
+      data: {
+        regions: [{
+          rows: [{
+            link: {ids: [128]},
+            cells: [
+              {text: ['gestern', '18:00']},
+              {text: ['Loc 1', 'Loc 2']},
+              {text: ['T1']},
+              {text: ['T2']},
+              {text: ['3:2']}
+            ]
+          }]
+        }]
+      }
+    }
+
+    vi.mocked(fetch).mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve(mockSeasonResponse)
+    } as never).mockResolvedValueOnce({
+      ok: false
+    } as never)
+
+    const games = await fetchGamesBySeason(2026)
+    const yesterday = new Date()
+    yesterday.setDate(yesterday.getDate() - 1)
+
+    expect(games[0].date.toDateString()).toBe(yesterday.toDateString())
   })
 
   it('should skip "abgesagt" games', async () => {

@@ -2,7 +2,8 @@ import type {Handler} from '@netlify/functions'
 import type {Game, GameDetails, GamesOverview, SuGameDetailsResponse, SuResponse} from "../../shared/types";
 import {TEAM_ID} from "../../shared/types";
 
-const API_BASE_URL = 'https://api-v2.swissunihockey.ch/api'
+// public endpoint used by the official Swiss Unihockey web components (api-v2 now requires auth)
+const API_BASE_URL = 'https://wc.swissunihockey.ch'
 
 async function fetchGame(id: number): Promise<GameDetails | null> {
   const res = await fetch(`${API_BASE_URL}/games/${id}`)
@@ -44,6 +45,9 @@ export async function fetchGamesBySeason(season: number): Promise<Game[]> {
     let date: Date;
     if (dateValue.toLowerCase() === 'heute') {
       date = new Date();
+    } else if (dateValue.toLowerCase() === 'gestern') {
+      date = new Date();
+      date.setDate(date.getDate() - 1);
     } else if (dateValue.toLowerCase() === 'morgen') {
       date = new Date();
       date.setDate(date.getDate() + 1);
